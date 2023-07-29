@@ -4,21 +4,21 @@ This script will group files into sub-folders, each sub-folder to be named with 
 
 Author: Tamim Hamoudi
 
-## Directory usage
+## Directory tree
 
 ```bash
- .
-├──  files
-│   ├──  arabic-1.txt
-│   ├──  arabic-10.txt
-│   ├──  arabic-100.txt
+.
+├── files
+│   ├── arabic-1.txt
+│   ├── arabic-10.txt
+│   ├── arabic-100.txt
 │   ├── ...
 │   ├── ...
-├──  main.py
-├──  README.md
-├──  requirements.txt
-├──  test_big_o.py
-└──  tests
+├── main.py
+├── README.md
+├── requirements.txt
+├── test_big_o.py
+└── tests
 ```
 
 ## Supported systems
