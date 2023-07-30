@@ -1,28 +1,29 @@
 import time
 from subprocess import Popen
-from os import mkdir, path, name, walk
+from os import mkdir, path, name, scandir
 
 
-def group_files_languages(destination_dir="lang", root_dir="tests"):
+def group_files_languages(destination_dir="lang", root="tests"):
+
     print("Grouping languages ...")
-    full_destination_dir = path.join(root_dir, destination_dir)
+    full_destination_dir = path.join(root, destination_dir)
     generate_dir(full_destination_dir)
 
     try:
-        for subdir, dirs, files in walk("files"):
-            for file in files:
-                if file.endswith(".txt"):
-                    original_file_path = path.join("files", file)
-                    new_file_path = path.join(
-                        full_destination_dir, file.split("-")[0])
+        for file in scandir("files"):
+            if file.name.endswith(".txt"):
+                original_file_path = path.join("files", file.name)
+                new_file_path = path.join(
+                    full_destination_dir, file.name.split("-")[0])
 
-                generate_dir(new_file_path)
+            generate_dir(new_file_path)
 
             if name == "nt":  # Check for windows operating systems
                 Popen(
                     f"copy {original_file_path} {new_file_path}".split(), shell=True)
             else:
                 Popen(f"cp {original_file_path} {new_file_path}".split())
+
     except Exception as e:
         print("An error occurred")
         print(e)
